@@ -14,6 +14,7 @@ import type StateBlock from "markdown-it/lib/rules_block/state_block";
 import { mathjax } from "mathjax-full/js/mathjax.js";
 import { TeX } from "mathjax-full/js/input/tex.js";
 import { SVG } from "mathjax-full/js/output/svg.js";
+import { CHTML } from "mathjax-full/js/output/chtml";
 import { liteAdaptor } from "mathjax-full/js/adaptors/liteAdaptor.js";
 import { RegisterHTMLHandler } from "mathjax-full/js/handlers/html.js";
 import { AllPackages } from "mathjax-full/js/input/tex/AllPackages.js";
@@ -22,7 +23,7 @@ import juice from "juice/client";
 
 interface DocumentOptions {
   InputJax: TeX<unknown, unknown, unknown>;
-  OutputJax: SVG<unknown, unknown, unknown>;
+  OutputJax: SVG<unknown, unknown, unknown> | CHTML<unknown, unknown, unknown>;
 }
 
 interface ConvertOptions {
@@ -214,7 +215,9 @@ function plugin(md: MarkdownIt, options: any) {
 
   const documentOptions = {
     InputJax: new TeX({ packages: AllPackages,  ...options?.tex }),
-    OutputJax: new SVG({ fontCache: 'none',  ...options?.svg })
+    OutputJax: options?.loader?.load?.includes('output/chtml')
+                ? new CHTML(options?.chtml)
+                : new SVG({ fontCache: 'none',  ...options?.svg })
   }
   const convertOptions = {
     display: false

@@ -13,5 +13,4 @@ Formally, a map $f:A\\to B$ preserves an operation $\\mu$ of arity $\\mathsf{k}$
 $$\\begin{equation}f(\\mu_A(a_1,\\ldots,a_k))=\\mu_B(f(a_1),\\ldots,f(a_k))\\end{equation}$$
 ,for all elements $a_1,\\ldots,a_k$ in $A$.
 `
-console.log(MarkdownIt().use(MarkdownItMathJaX3, { tex: {tags: 'ams'} }).render(md))
-
+console.log(MarkdownIt().use(MarkdownItMathJaX3, { tex: {tags: 'ams'}, loader: {load: "output/chtml" }}).render(md))
