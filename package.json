@@ -1,5 +1,5 @@
 {
-  "name": "markdown-it-mathjax3",
+  "name": "markdown-it-mathjax3-tao",
   "version": "4.3.2",
   "description": "Fast math support for markdown-it with MathJax",
   "main": "index.js",
