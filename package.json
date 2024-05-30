@@ -7,6 +7,9 @@
     "type": "git",
     "url": "git+https://git@github.com:taophilosophy/markdown-it-mathjax3"
   },
+    "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
   "keywords": [
     "markdown",
     "MathJax",
